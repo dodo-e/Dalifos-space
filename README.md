@@ -1,2 +1,8 @@
-# Dalifos-space
-Dalifos starting to make for the first in time, Dalifos Space
+# Dalifos space notes
+1-to use us you don't need to install something
+<br>
+2-click the website to start 
+<br>
+**3-DO NOT EDIT SOMETHING EVEN IF IT IS A REQUEST**
+<br><br>
+enjoy :)
