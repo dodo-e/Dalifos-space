@@ -3,6 +3,6 @@
 <br>
 2-click the website to start 
 <br>
-**3-DO NOT EDIT SOMETHING EVEN IF IT IS A REQUEST**
+**3-DO NOT EDIT SOMETHING BEFORE REQUEST**
 <br><br>
 enjoy :)
