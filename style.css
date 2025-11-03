@@ -1,0 +1,45 @@
+body{
+    background-image: url(assets/background.png);
+    background-size: cover;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px;
+    animation: fade-in 4s;
+}
+a {
+    color: #00FFFF;
+    text-decoration: none;
+    font-size: 18px;
+}
+img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+button {
+    background-image: url(assets/background.png);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+input {
+    padding: 10px;
+    border: 5px outset #0044ff;
+    border-radius: 12px;
+    font-size: 16px;
+}
+input:hover {
+    border: 5px outset #00ffff;
+}
+@keyframes fade-in {
+  from {color: rgba(0, 47, 255, 0);}
+  to {color: rgb(255, 255, 255);}
+}
