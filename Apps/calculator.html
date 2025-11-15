@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="calculator-logo.png" type="image/x-icon">
+    <title>D Calculator</title>
+    <style>
+        .calculator-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+    .calculator {
+            background-image: linear-gradient( to right, rgb(20, 20, 20),rgb(66, 66, 66));
+            border: 5px solid rgb(63, 63, 63);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 300px;
+        }
+        #display {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            grid-column: span 4;
+            height: 60px;
+            background-color: #000000e3;
+            color: white;
+            font-size: 2.6em;
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .btn {
+            height: 65px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .number {
+            background-color: #727272;
+            color: white;
+        }
+        .operator {
+            background-image: linear-gradient( to right, rgb(251, 255, 0),rgb(255, 187, 0));
+            color: black;
+        }
+        .equal {
+            background-image: linear-gradient( to right, rgb(251, 255, 0),rgb(255, 187, 0));
+            color: white;
+            grid-column:span 2;
+        }
+
+        .clear {
+            background-color: #ccc;
+            color: #333;
+        }
+        .btn:active {
+            filter: brightness(0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div id="display">0</div>
+            
+            <button class="btn operator">/</button>
+            <button class="btn operator">×</button>
+            <button class="btn operator">-</button>
+            <button class="btn operator">+</button>
+            <button class="btn number">7</button>
+            <button class="btn number">8</button>
+            <button class="btn number">9</button>
+            <button class="btn number">4</button>
+            <button class="btn number">5</button>
+            <button class="btn number">6</button>
+            <button class="btn number">1</button>
+            <button class="btn number">2</button>
+            <button class="btn number">3</button>
+            <button class="btn number">0</button>
+            <button class="btn number">.</button>
+            <button class="btn equal">=</button>
+            <button class="btn clear">C</button>
+        </div>
+    </div>
+    
+<script>
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('.btn');
+    let currentInput = '0';
+    let lastResult = '';
+    
+    // Function to update the display
+    const updateDisplay = () => {
+        display.textContent = currentInput || '0';
+    };
+
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const buttonValue = e.target.textContent;
+
+            if (buttonValue === 'C') {
+                currentInput = '0';
+                lastResult = '';
+            } else if (buttonValue === '=') {
+                try {
+                    let expression = currentInput.replace(/×/g, '*');
+                    let result = eval(expression);
+                    display.textContent = result;
+                    currentInput = result.toString();
+                    lastResult = '';
+                } catch (error) {
+                    display.textContent = 'Error';
+                    currentInput = '0';
+                    lastResult = '';
+                }
+            } else if (['/', '*', '-', '+'].includes(buttonValue)) {
+                if (currentInput === '0' && buttonValue !== '-') {
+                    return;
+                }
+                if (['/', '*', '-', '+'].includes(currentInput.slice(-1))) {
+                    currentInput = currentInput.slice(0, -1) + buttonValue;
+                } else {
+                    currentInput += buttonValue;
+                }
+            } else if (buttonValue === '.') {
+                if (currentInput.includes('.')) {
+                    return;
+                }
+                currentInput += buttonValue;
+            } else {
+                if (currentInput === '0') {
+                    currentInput = buttonValue;
+                } else {
+                    currentInput += buttonValue;
+                }
+            }
+            updateDisplay();
+        });
+    });
+</script>
+</body>
+</html>
